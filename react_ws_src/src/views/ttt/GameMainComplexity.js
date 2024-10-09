@@ -40,8 +40,11 @@ function selectRandomNullIndex(arr) {
 
 /*
 
- 9-Oct-24
- A/B TEST - Assuming that the new game engine will appear like for like and not negatively impact usage
+ Game Complexity ABC TEST
+
+ Level "easy" = Computer move is based on Math.random (same as current live behaviour)
+ Level "normal" = Computer move has 50/50 chance to be "hard" or "easy"
+ Level "hard" = Computer move is decided through the minimax algorithm
 
  */
 
@@ -113,8 +116,6 @@ export default class GameMainComplexity extends Component {
 	render () {
 		const { engine, gameStatus, difficulty } = this.state
 
-		const gameWon = gameStatus !== GameStatus.DRAW || gameStatus !== GameStatus.ONGOING;
-
 		return (
 			<div id='GameMain' className={gameStatus === GameStatus.ONGOING ? 'is-playing' : 'is-complete'}>
 
@@ -163,8 +164,8 @@ export default class GameMainComplexity extends Component {
 	click_cell (x, y) {
 		const { engine, gameStatus, cell_vals } = this.state
 
-		console.log({ board: JSON.stringify(engine.board) })
-		console.log(`You selected`, { x, y })
+		// console.log({ board: JSON.stringify(engine.board) })
+		console.log('You selected', { x, y })
 
 		if (gameStatus !== GameStatus.ONGOING) {
 			return
@@ -175,7 +176,6 @@ export default class GameMainComplexity extends Component {
 			return
 		}
 
-		// move
 		const newCallVals = [...cell_vals]
 		newCallVals[y][x] = 'x'
 
@@ -198,7 +198,7 @@ export default class GameMainComplexity extends Component {
 	turn_ply_comp () {
 		const { engine, cell_vals, difficulty } = this.state
 
-		// calculate next x,y
+		// calculate next move
 		let x,y;
 
 		if (difficulty === 'normal' && Math.random() < 0.5 || difficulty === 'hard') {
@@ -217,7 +217,7 @@ export default class GameMainComplexity extends Component {
 			console.log('Computer calculated easy move', { x, y })
 		}
 
-		// move
+		// computer move
 		try {
 			const gameStatusNext = engine.makeNextMove(x, y)
 			this.updateGameStatus(gameStatusNext)
@@ -226,7 +226,6 @@ export default class GameMainComplexity extends Component {
 		}
 
 		const newCallVals = [...cell_vals]
-		// player is them
 		newCallVals[y][x] = 'o'
 		this.setState({ cell_vals: newCallVals })
 		TweenMax.from(this.refs[String(y) + String(x)], 0.7, {opacity: 0, scaleX:0, scaleY:0, ease: Power4.easeOut})
