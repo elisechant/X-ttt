@@ -89,7 +89,7 @@ app.extend({
 			basename: base_dir
 		})
 
-		this.start_ga()
+		// this.start_ga()
 
 		renderSite()
 	},

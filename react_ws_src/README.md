@@ -22,8 +22,11 @@ Major libraries used:
 Install all the packages
 
 ~~~bash
-npm install
+npm install --force
 ~~~
+
+> [!NOTE]
+> `--force` is required 
 
 To start the development web server use the following command and turn your browser to [http://localhost:3000](http://localhost:3000) or [http://0.0.0.0:3000](http://0.0.0.0:3000) 
 
