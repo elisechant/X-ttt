@@ -70,7 +70,7 @@ section#TTT_game{
 					height: 100px;
 					line-height:1.5em;
 					padding-top:10px;
-			}				
+			}
 			::-webkit-input-placeholder { /* WebKit, Blink, Edge */
 			    color:    $colorSecondary;
 			}
@@ -87,14 +87,14 @@ section#TTT_game{
 			}
 			:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
 			  color:    $colorSecondary;
-			}							
+			}
 		}
 
 		&.select_option.error select{
 		  border: 1px solid $colorSecondary;
 		  //box-shadow:0px 4px 0px 0px $colorSecondary;
 		  color: $colorSecondary;
-		}			
+		}
 	}
 
 	.button {
@@ -105,7 +105,7 @@ section#TTT_game{
 
 		&.long {
 			width: 300px;
-		}	
+		}
 	}
 
 	#game_stat {
@@ -163,4 +163,20 @@ section#TTT_game{
 		}
 	}
 
+}
+
+#GameMain #game_board td {
+	&:hover {
+		cursor: pointer;
+	}
+}
+#GameMain.is-complete #game_board td {
+	&:hover {
+		background: initial;
+		cursor: default;
+	}
+}
+
+#GameMain.is-complete #game_stat {
+	background: skyblue;
 }

@@ -8,9 +8,10 @@ Immediate term plans of X Tic Tac Toe.
 
 Product features we want to ship.   
  
-* ↑↑ Game complexity - levels "easy" (current), "normal" or "hard" - We would like to know whether more complex games leads to more games being played.  
-  * "hard" - use minimax AI decision algorithm
-  * Run as ABC test
+* ↑↑ Game complexity - levels "easy" (current), "normal" or "hard" - We would like to know whether more complex games leads to more games being played. 
+  * ~~"hard" - use minimax AI decision algorithm~~
+  * ~~Run as ABC test~~
+  * Productionise the winning variant
 * Monetisation - Goal TBD 
   * Tasks TBD 
 * Uplift game board UI, UX - We think that a cooler looking site will lead to more users, as we assume people will share it. 

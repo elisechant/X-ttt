@@ -12,6 +12,8 @@ export default class SetName extends Component {
 	constructor (props) {
 		super(props)
 
+		console.log('** Starting Game ORIGINAL **')
+
 		this.win_sets = [
 			['c1', 'c2', 'c3'],
 			['c4', 'c5', 'c6'],
@@ -59,14 +61,14 @@ export default class SetName extends Component {
 
 		this.socket = io(app.settings.ws_conf.loc.SOCKET__io.u);
 
-		this.socket.on('connect', function(data) { 
+		this.socket.on('connect', function(data) {
 			// console.log('socket connected', data)
 
 			this.socket.emit('new player', { name: app.settings.curr_user.name });
 
 		}.bind(this));
 
-		this.socket.on('pair_players', function(data) { 
+		this.socket.on('pair_players', function(data) {
 			// console.log('paired with ', data)
 
 			this.setState({
@@ -197,7 +199,7 @@ export default class SetName extends Component {
 		let empty_cells_arr = []
 
 
-		for (let i=1; i<=9; i++) 
+		for (let i=1; i<=9; i++)
 			!cell_vals['c'+i] && empty_cells_arr.push('c'+i)
 		// console.log(cell_vals, empty_cells_arr, rand_arr_elem(empty_cells_arr))
 
@@ -290,13 +292,13 @@ export default class SetName extends Component {
 		}
 
 
-		for (let i=1; i<=9; i++) 
+		for (let i=1; i<=9; i++)
 			!cell_vals['c'+i] && (fin = false)
 
 		// win && console.log('win set: ', set)
 
 		if (win) {
-		
+
 			this.refs[set[0]].classList.add('win')
 			this.refs[set[1]].classList.add('win')
 			this.refs[set[2]].classList.add('win')
@@ -312,7 +314,7 @@ export default class SetName extends Component {
 			this.socket && this.socket.disconnect();
 
 		} else if (fin) {
-		
+
 			this.setState({
 				game_stat: 'Draw',
 				game_play: false
@@ -327,7 +329,7 @@ export default class SetName extends Component {
 				next_turn_ply: !this.state.next_turn_ply
 			})
 		}
-		
+
 	}
 
 //	------------------------	------------------------	------------------------
